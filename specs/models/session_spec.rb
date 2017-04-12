@@ -28,6 +28,7 @@ describe Session do
     it 'should add talk in the session' do
       talk = double('Talk', duration: 20)
       expect(talk).to receive(:start_time=).with(start_time)
+      expect(talk).to receive(:scheduled=).with(true)
 
       session.add_talk(talk)
 

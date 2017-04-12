@@ -9,15 +9,15 @@ class Manager
       talks = Parser.parse(file)
 
       conference = Conference.new(track_count)
-      *tracks = conference.schedule(talks)
-      print_schedule tracks
+      conference.schedule(talks)
+      print_schedule conference.tracks
     end
 
     def print_schedule tracks
       time_display_format = '%H:%M %p'
 
       tracks.each_with_index do |track, index|
-        puts "-----------Track #{index}------------"
+        puts "-----------Track #{index+1}------------"
         track.sessions.each do |session|
           if session.class == Break
             puts "#{session.start_time.strftime(time_display_format)} #{session.type}"

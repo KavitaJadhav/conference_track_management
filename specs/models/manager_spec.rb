@@ -23,13 +23,14 @@ describe Manager do
 
       expect(Parser).to receive(:parse).with(file).and_return(talks)
       expect(Conference).to receive(:new).with(2).and_return(conference)
-      expect(conference).to receive(:schedule).with(talks).and_return(tracks)
+      expect(conference).to receive(:schedule).with(talks)
+      expect(conference).to receive(:tracks).and_return(tracks)
 
-      expect(STDOUT).to receive(:puts).with('-----------Track 0------------').ordered
+      expect(STDOUT).to receive(:puts).with('-----------Track 1------------').ordered
       expect(STDOUT).to receive(:puts).with('11:10 AM Lunch').ordered
       expect(STDOUT).to receive(:puts).with('11:10 AM Talk1').ordered
 
-      expect(STDOUT).to receive(:puts).with('-----------Track 1------------').ordered
+      expect(STDOUT).to receive(:puts).with('-----------Track 2------------').ordered
       expect(STDOUT).to receive(:puts).with('11:10 AM Snacks').ordered
       expect(STDOUT).to receive(:puts).with('11:10 AM Talk1').ordered
 

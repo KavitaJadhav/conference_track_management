@@ -15,6 +15,7 @@ class Session
   def add_talk talk
     talks << talk
     talk.start_time = TimeUtil.minute_back end_time, time_available
+    talk.scheduled = true
     @time_available -= talk.duration
   end
 
